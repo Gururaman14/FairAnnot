@@ -22,3 +22,15 @@ PROCESSED_HATEXPLAIN_PATH = PROCESSED_DATA_DIR / "processed_hatexplain.csv"
 RANDOM_SEED = 42
 TEXT_COLUMN = "text"
 LABEL_COLUMN = "label"
+
+#model
+MODEL_NAME = "answerdotai/ModernBERT-base"
+
+# training
+BATCH_SIZE = 16
+MAX_LENGTH = 128
+LEARNING_RATE = 2e-5
+NUM_EPOCHS = 3
+
+# misc
+RANDOM_SEED = 42
