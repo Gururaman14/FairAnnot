@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 
-# ── Text Cleaning ──────────────────────────────────────────────────────────────
+# Text Cleaning 
 
 def clean_text(text):
     """Clean input text: lowercase, strip URLs, mentions, hashtags, and punctuation."""
@@ -14,7 +14,7 @@ def clean_text(text):
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
-# ── Duplicate Handling ─────────────────────────────────────────────────────────
+#  Duplicate Handling 
 
 def remove_duplicates(df, subset=None):
     """Remove duplicate rows. Returns cleaned DataFrame and count of removed rows."""
@@ -24,7 +24,7 @@ def remove_duplicates(df, subset=None):
     print(f"  Duplicates removed: {removed}")
     return df, removed
 
-# ── Label Standardisation ──────────────────────────────────────────────────────
+# Label Standardisation 
 
 def standardize_labels_hate_speech(df):
     """
@@ -62,7 +62,7 @@ def standardize_labels_hatexplain(df):
     df['label'] = df['label'].str.lower().map(label_mapping).fillna('unknown')
     return df
 
-# ── Feature Engineering ────────────────────────────────────────────────────────
+#  Feature Engineering 
 
 def calculate_text_length(df, text_column='clean_text'):
     """Add a 'text_length' column (character count)."""
@@ -76,7 +76,7 @@ def calculate_word_count(df, text_column='clean_text'):
     df['word_count'] = df[text_column].astype(str).apply(lambda x: len(x.split()))
     return df
 
-# ── Missing Value Handling ─────────────────────────────────────────────────────
+#  Missing Value Handling 
 
 def handle_missing_text(df, text_column='text'):
     """Fill NaN values in the text column with an empty string."""
@@ -86,7 +86,7 @@ def handle_missing_text(df, text_column='text'):
     print(f"  Missing values filled in '{text_column}': {missing_count}")
     return df, int(missing_count)
 
-# ── Preprocessing Summary ──────────────────────────────────────────────────────
+#  Preprocessing Summary 
 
 def print_summary(name, initial_rows, duplicates_removed, missing_handled,
                   final_df, output_path):
