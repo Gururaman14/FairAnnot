@@ -12,7 +12,7 @@ TRUST_MODULE_DIR = BASE_DIR / "trust_module"
 TRUST_RESULTS_DIR = TRUST_MODULE_DIR / "results"
 TRUST_PLOTS_DIR = TRUST_RESULTS_DIR / "plots"
 
-# Ensure directories exist
+# Create Directories
 PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
 TRUST_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 TRUST_PLOTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -24,25 +24,22 @@ HATEXPLAIN_DATASET_PATH = RAW_DATA_DIR / "HateXplain.json"
 # Processed Dataset Paths
 PROCESSED_HATE_SPEECH_PATH = PROCESSED_DATA_DIR / "processed_hate_speech.csv"
 PROCESSED_HATEXPLAIN_PATH = PROCESSED_DATA_DIR / "processed_hatexplain.csv"
+TRAINING_DATASET_PATH = PROCESSED_DATA_DIR / "training_dataset.csv"
 
 # Trust Module Output Paths
 ANNOTATOR_WEIGHTS_PATH = TRUST_RESULTS_DIR / "annotator_weights.csv"
 SOFT_LABELS_PATH = TRUST_RESULTS_DIR / "soft_labels.csv"
-TRAINING_DATASET_PATH = PROCESSED_DATA_DIR / "training_dataset.csv"
 
-# Common Project Constants
-RANDOM_SEED = 42
-TEXT_COLUMN = "text"
-LABEL_COLUMN = "label"
-
-#model
+# Model Configuration
 MODEL_NAME = "answerdotai/ModernBERT-base"
 
-# training
+# Training Configuration
 BATCH_SIZE = 16
 MAX_LENGTH = 128
 LEARNING_RATE = 2e-5
 NUM_EPOCHS = 3
 
-# misc
+# Common Project Constants
 RANDOM_SEED = 42
+TEXT_COLUMN = "text"
+LABEL_COLUMN = "label"

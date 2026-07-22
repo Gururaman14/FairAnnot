@@ -151,3 +151,65 @@ FairAnnot/
 - Let's keep the code clean and functional, just like Day 1.
 - Remember to save any new intermediate datasets into `data/processed/'.
 - If we hit any memory issues with the tokenizers on the larger Measuring Hate Speech dataset, we might need to adjust the max sequence lengths.
+
+# Demographic / Trust Model
+
+### Files
+
+- 'notebooks/02_demographic_model.ipynb'
+- 'demographic_module/trust_embedding.py'
+- 'demographic_module/fusion_layer.py'
+
+## Work Completed
+
+- Loaded the processed datasets.
+- Loaded the training dataset generated from the trust pipeline.
+- Created train, validation and test splits.
+- Encoded class labels.
+- Built custom PyTorch Dataset classes.
+- Created DataLoaders.
+- Built the baseline ModernBERT model.
+- Implemented the Trust Embedding module.
+- Implemented the Fusion Layer.
+- Integrated the trust features with ModernBERT.
+- Verified the model using a forward pass.
+- Configured the loss function and optimizer.
+
+## Execution Order
+
+1. Run Person A's preprocessing notebook.
+2. Run Person A's trust pipeline to generate:
+   - 'training_dataset.csv'
+   - 'annotator_weights.csv'
+   - 'soft_labels.csv'
+3. Verify 'shared/config.py' contains all required paths and model configuration.
+4. Install the required Python packages.
+5. Run 'notebooks/02_demographic_model.ipynb'.
+
+## Required Files
+
+- 'data/processed/processed_hate_speech.csv'
+- 'data/processed/processed_hatexplain.csv'
+- 'data/processed/training_dataset.csv'
+- 'shared/config.py'
+- 'demographic_module/trust_embedding.py'
+- 'demographic_module/fusion_layer.py'
+
+## Output
+
+After execution the notebook should:
+
+- Load both datasets.
+- Create train, validation and test DataLoaders.
+- Build the ModernBERT model.
+- Generate trust embeddings.
+- Fuse the trust features with the BERT representation.
+- Perform a successful forward pass.
+- Initialize the optimizer and loss function.
+
+## Notes
+
+- Run Person A's work before running this notebook.
+- Do not execute files inside the 'shared' or 'demographic_module' folders directly.
+- These modules should only be imported.
+- Ensure all required dependencies are installed before execution.
