@@ -214,7 +214,6 @@ After execution the notebook should:
 - These modules should only be imported.
 - Ensure all required dependencies are installed before execution.
 
-
 # Day 3: Trust Pipeline Wrap-up & Project Handover
 
 ## Overview
@@ -328,3 +327,32 @@ Before running '02_demographic_model.ipynb':
 - Test Loss: 0.0244
 - Trained model saved as 'demographic_modernbert.pt'
 - Label mapping saved as 'label_mapping.json'
+
+# Explainability Module
+
+## Person C Day 1 Progress
+
+The explainability framework has been prepared without running model training, SHAP analysis, or Captum analysis.
+
+## Files Completed
+
+- `explainability_module/shap_analysis.py`
+- `explainability_module/captum_analysis.py`
+- `explainability_module/visualization.py`
+- `explainability_module/evaluation.py`
+- `explainability_module/README.md`
+- `explainability_module/results/`
+
+## Work Completed
+
+- Added reusable SHAP helper functions for loading the model, loading datasets, initializing explainers, generating SHAP values, and preparing global and local explanations.
+- Added reusable Captum helper functions for Integrated Gradients, saliency maps, and feature attribution.
+- Added reusable visualization functions for feature importance, confusion matrix, class distribution, fairness metrics, and saving plots.
+- Added reusable evaluation functions for accuracy, precision, recall, F1, ROC AUC, classification reports, and confusion matrices.
+- Added final dataset path constants in `shared/config.py` so the explainability module can use `data/final/training_dataset.csv` when it becomes available.
+
+## Day 2 Plan
+
+- Load the trained model from Person B.
+- Run SHAP and Captum explainability analysis.
+- Generate and save explainability plots in `explainability_module/results/`.

@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
+FINAL_DATA_DIR = DATA_DIR / "final"
 
 # Trust Module Directories
 TRUST_MODULE_DIR = BASE_DIR / "trust_module"
@@ -14,6 +15,7 @@ TRUST_PLOTS_DIR = TRUST_RESULTS_DIR / "plots"
 
 # Create Directories
 PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
+FINAL_DATA_DIR.mkdir(parents=True, exist_ok=True)
 TRUST_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 TRUST_PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -25,6 +27,7 @@ HATEXPLAIN_DATASET_PATH = RAW_DATA_DIR / "HateXplain.json"
 PROCESSED_HATE_SPEECH_PATH = PROCESSED_DATA_DIR / "processed_hate_speech.csv"
 PROCESSED_HATEXPLAIN_PATH = PROCESSED_DATA_DIR / "processed_hatexplain.csv"
 TRAINING_DATASET_PATH = PROCESSED_DATA_DIR / "training_dataset.csv"
+FINAL_TRAINING_DATASET_PATH = FINAL_DATA_DIR / "training_dataset.csv"
 
 # Trust Module Output Paths
 ANNOTATOR_WEIGHTS_PATH = TRUST_RESULTS_DIR / "annotator_weights.csv"
