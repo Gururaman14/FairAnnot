@@ -1,6 +1,30 @@
+import json
 import pandas as pd
 
 from shared import config
+
+
+def load_trained_model(model_path=None):
+    import torch
+
+    path = model_path or config.TRAINED_MODEL_PATH
+    if not path.exists() and config.ROOT_TRAINED_MODEL_PATH.exists():
+        path = config.ROOT_TRAINED_MODEL_PATH
+    if not path.exists():
+        raise FileNotFoundError(f"Trained model not found: {path}")
+
+    return torch.load(path, map_location="cpu")
+
+
+def load_label_mapping(mapping_path=None):
+    path = mapping_path or config.LABEL_MAPPING_PATH
+    if not path.exists() and config.ROOT_LABEL_MAPPING_PATH.exists():
+        path = config.ROOT_LABEL_MAPPING_PATH
+    if not path.exists():
+        raise FileNotFoundError(f"Label mapping not found: {path}")
+
+    with open(path, "r", encoding="utf-8") as mapping_file:
+        return json.load(mapping_file)
 
 
 def load_dataset():

@@ -7,11 +7,20 @@ from shared import config
 
 
 def load_model(model_path=None):
-    path = model_path or getattr(config, "MODEL_PATH", None)
+    path = model_path or getattr(config, "TRAINED_MODEL_PATH", None)
+    if path is not None:
+        path = Path(path)
+        if not path.exists() and getattr(config, "ROOT_TRAINED_MODEL_PATH", None):
+            root_path = Path(config.ROOT_TRAINED_MODEL_PATH)
+            if root_path.exists():
+                path = root_path
     if path is None:
         raise FileNotFoundError("Trained model path is not configured yet.")
 
     path = Path(path)
+    if not path.exists():
+        raise FileNotFoundError(f"Trained model not found: {path}")
+
     if path.suffix in {".pt", ".pth"}:
         import torch
 

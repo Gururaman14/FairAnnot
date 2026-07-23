@@ -1,6 +1,18 @@
 from shared import config
 
 
+def load_trained_model(model_path=None):
+    import torch
+
+    path = model_path or config.TRAINED_MODEL_PATH
+    if not path.exists() and config.ROOT_TRAINED_MODEL_PATH.exists():
+        path = config.ROOT_TRAINED_MODEL_PATH
+    if not path.exists():
+        raise FileNotFoundError(f"Trained model not found: {path}")
+
+    return torch.load(path, map_location="cpu")
+
+
 def integrated_gradients(model, inputs, target=None, baselines=None):
     from captum.attr import IntegratedGradients
 

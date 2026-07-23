@@ -7,6 +7,7 @@ DATA_DIR = BASE_DIR / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 FINAL_DATA_DIR = DATA_DIR / "final"
+MODEL_DIR = BASE_DIR / "models"
 
 # Trust Module Directories
 TRUST_MODULE_DIR = BASE_DIR / "trust_module"
@@ -16,6 +17,7 @@ TRUST_PLOTS_DIR = TRUST_RESULTS_DIR / "plots"
 # Create Directories
 PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
 FINAL_DATA_DIR.mkdir(parents=True, exist_ok=True)
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
 TRUST_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 TRUST_PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -46,6 +48,10 @@ EVALUATION_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Model Configuration
 MODEL_NAME = "answerdotai/ModernBERT-base"
+TRAINED_MODEL_PATH = MODEL_DIR / "demographic_modernbert.pt"
+ROOT_TRAINED_MODEL_PATH = BASE_DIR / "demographic_modernbert.pt"
+LABEL_MAPPING_PATH = MODEL_DIR / "label_mapping.json"
+ROOT_LABEL_MAPPING_PATH = BASE_DIR / "label_mapping.json"
 
 # Training Configuration
 BATCH_SIZE = 16
