@@ -58,6 +58,7 @@ def run_pipeline(ds_n_iter=30, hx_n_iter=50, verbose=True):
     hx_weights['dataset'] = 'hatexplain'
     all_weights = pd.concat([hs_weights, hx_weights], ignore_index=True)
     all_weights.to_csv(config.ANNOTATOR_WEIGHTS_PATH, index=False)
+    all_weights.to_csv(config.PROCESSED_ANNOTATOR_WEIGHTS_PATH, index=False)
     print(f"  Saved: {config.ANNOTATOR_WEIGHTS_PATH}")
 
     hs_soft = ds_hate.get_soft_labels()
@@ -80,6 +81,7 @@ def run_pipeline(ds_n_iter=30, hx_n_iter=50, verbose=True):
 
     all_soft = pd.concat([hs_soft[SOFT_COLS], hx_soft[SOFT_COLS]], ignore_index=True)
     all_soft.to_csv(config.SOFT_LABELS_PATH, index=False)
+    all_soft.to_csv(config.PROCESSED_SOFT_LABELS_PATH, index=False)
     print(f"  Saved: {config.SOFT_LABELS_PATH}")
 
     print("\n[6/6] Assembling training_dataset.csv...")

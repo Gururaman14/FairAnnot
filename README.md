@@ -356,3 +356,65 @@ The explainability framework has been prepared without running model training, S
 - Load the trained model from Person B.
 - Run SHAP and Captum explainability analysis.
 - Generate and save explainability plots in `explainability_module/results/`.
+
+# Final Day - Explainability, Fairness and Evaluation
+
+## Execution Order
+
+1. Run `notebooks/01_data_preprocessing.ipynb`.
+2. Run `trust_module/run_trust_pipeline.py`.
+3. Verify these files exist:
+   - `data/processed/processed_hate_speech.csv`
+   - `data/processed/processed_hatexplain.csv`
+   - `data/processed/training_dataset.csv`
+   - `data/processed/annotator_weights.csv`
+   - `data/processed/soft_labels.csv`
+4. Run `notebooks/02_demographic_model.ipynb` and verify the ModernBERT forward pass.
+5. Run `notebooks/03_explainability.ipynb`.
+
+## Required Files
+
+- `data/raw/hate_speech_dataset.csv`
+- `data/raw/HateXplain.json`
+- `data/processed/training_dataset.csv`
+- Person B's trained model or prediction output.
+- `shared/config.py`
+
+## Completed Files
+
+- `notebooks/03_explainability.ipynb`
+- `explainability/shap_explainer.py`
+- `explainability/captum_explainer.py`
+- `evaluation/fairness_metrics.py`
+- `evaluation/model_evaluation.py`
+
+## Output Files
+
+- `evaluation/results/metrics.csv`
+- `evaluation/results/predictions.csv`
+- `evaluation/results/classification_report.csv`
+- `evaluation/results/confusion_matrix.png`
+- `evaluation/results/fairness_results.csv`
+- `evaluation/results/prediction_distribution.csv`
+- `explainability/results/shap_feature_importance.png`
+- `explainability/results/shap_local_sample_*.png`
+- `explainability/results/captum_token_attributions.csv`
+- `explainability/results/captum_token_attributions.png`
+
+## SHAP
+
+SHAP explains model predictions by estimating how much each input feature or token contributes to the final prediction. In this project it is used for global feature importance and local explanations for correctly classified and misclassified samples.
+
+## Captum
+
+Captum provides PyTorch attribution methods such as Integrated Gradients and saliency maps. In this project it is used to inspect token-level contributions from the trained ModernBERT model.
+
+## Fairness Evaluation
+
+Fairness evaluation compares prediction distributions and group-level performance when protected attribute columns are available. The module reports group accuracy and demographic parity differences where applicable.
+
+## Final Notes
+
+- No model training is performed inside the explainability module.
+- SHAP and Captum require the trained model and dependencies to be available.
+- The final notebook saves evaluation and fairness outputs automatically when predictions are available.
