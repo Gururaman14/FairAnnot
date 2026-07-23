@@ -33,7 +33,7 @@ class TrustEmbedding(nn.Module):
         )
 
         trust_embedding = self.embedding(
-            demographic_features.float()
+            trust_features.float()
         )
 
         return trust_embedding
